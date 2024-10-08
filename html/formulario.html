@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOS PEDRO'S CUSTOMS FORMULARIO</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Oswald&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Oswald&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../Index.html">Home</a></li>
+            <li><a href="../html/contatos.html">Contatos</a></li>
+            <li><a href="../html/sobrenos.html">Sobre Nos</a></li>
+            <li><a href="../html/orcamento.html">Orçamento</a></li>
+            <li><a href="../html/formulario.html">Trabalhe Conosco</a></li>
+        </ul>
+    </nav>
+    <section class="invisible-big">
+        <p></p>
+    </section>
+    <section class="formulario">
+        <section class="forms">
+            <h2>Formulario</h2>
+            <br>
+            <form >
+                <label>Nome Completo:</label>
+                <br>
+                <input type="text" name="name" placeholder="Digite seu nome" autocomplete="off">
+                <label>E-mail:</label>
+                <br>
+                <input type="email" name="email" placeholder="ex: xxxx@gmail.com" autocomplete="off" required>
+                <label>Qual a sua função? </label>
+                <br>
+                <textarea name="message" placeholder="Digite qual seria sua função na empresa" required></textarea>
+                <label>Fale sobre você: </label>
+                <br>
+                <textarea name="message" placeholder="Digite um pouco mais sobre voce" required></textarea>
+                <label>Porque devemos te escolher? </label>
+                <br>
+                <textarea name="message" cols="30" rows="10" placeholder="Digite o porque devemos te escolher" required></textarea>
+
+                <button type="submit" onclick="mensage()">Enviar</button>
+
+                <input type="hidden" name="redirectTo" value="">
+            </form>
+        </section>    
+    </section>
+    <section class="invisible-big">
+        <p></p>
+    </section>
+    
+    <footer>
+        <h3>Todos os direitos Reservados para Los Pedro's Customs</h3>
+    </footer>
+</body>
+</html>
+<script>
+    function mensage(){
+        alert("Formulario enviado com sucesso!!!!!")
+    }
+</script>

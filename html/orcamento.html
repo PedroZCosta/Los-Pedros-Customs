@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOS PEDRO'S CUSTOMS FORMULARIO</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Oswald&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+    
+<style>
+    /* Configuração geral da página */
+    .pedidos {
+        color: white;
+    }
+
+    .pedidos h2{
+        margin-top: 10px;
+    }
+
+    .pedidos section{
+        background-color: rgba(128, 128, 128, 0.288);
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        border-radius: 20px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    .pedidos select{
+        margin-bottom: 1%;
+        min-height: 30px;
+        min-width: 200px;
+        border-radius: 10px;
+
+    }
+
+    .pedidos label{
+        display: inline-block;
+        margin: 10px;
+    }
+
+    /* configuração dos botões de CONFIRMA */
+    .button-wrapper {
+    text-align: center;
+    }
+
+    .button-wrapper input[type="button"] {
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+
+    /* escondendo todos os elementos .hidden */
+
+    .hidden {
+        display: none;
+    }
+
+    /* Configuração das RADIOS para parecerem com imagem e não o modelo padrão */
+
+    .selection-container {
+        border: 2px solid transparent;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+    }
+
+    .radio-title {
+        margin-bottom: 5px; 
+        font-weight: bold; 
+    }
+
+    .radio-img {
+        width: 200px;
+    }
+
+    input[type="radio"]:checked + .selection-container {
+        border-color: blue; 
+        background-color: rgba(0, 0, 139, 0.5);
+        border-radius: 10px;
+        opacity: 0.7;
+    }
+
+    /* Configuração das Checkboxes para parecerem com imagem e não o modelo padrão */
+
+    .servicescheckbox {
+        min-width: 230px;
+    }
+
+    .checkbox-title {
+        margin-bottom: 5px; 
+        font-weight: bold; 
+    }
+
+    .checkbox-title h4 {
+        margin: 0;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .checkbox-title ul {
+        list-style-type: disc;
+        text-align: left;
+        margin: 5px 0 0 20px;
+        padding-left: 0;
+    }
+
+    .checkbox-title li {
+        margin: 2px 0;
+        font-size: 1em;
+    }
+
+    .selection-container {
+        border: 2px solid transparent;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+    }
+
+    .checkbox-img {
+        width: 150px; /* Adjust size as needed */
+    }
+
+
+    input[type="checkbox"]:checked + .selection-container {
+        border-color: green; /* Highlight selected area with a border color */
+        background-color: rgba(0, 139, 23, 0.5);
+        border-radius: 10px;
+        opacity: 0.7; /* Optional: change opacity to indicate selection */
+    }
+    .radio-title 
+    /* txt areas */
+    .pedidos textarea{
+        min-width: 600px; 
+        height: 200px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .pedidos textarea{
+        min-width: 200px; 
+        height: 200px;
+    }
+    }
+
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="../Index.html">Home</a></li>
+            <li><a href="../html/contatos.html">Contatos</a></li>
+            <li><a href="../html/sobrenos.html">Sobre Nos</a></li>
+            <li><a href="../html/orcamento.html">Orçamento</a></li>
+            <li><a href="../html/formulario.html">Trabalhe Conosco</a></li>
+        </ul>
+    </nav>
+    
+    <form id="orcamento" action="" method="get" class="pedidos">
+        <!-- Marca, Modelo e Ano -->
+        <section>
+            <!-- Section da Marca do carro (é a primeira a aparecer quando houver alteração ira zerar as outras sections) -->
+            <section id="brandSection"> <!-- (for, id, name) carBrand -->
+                <label for="carBrand">Informe a Marca do Veículo:</label><br>
+                <select id="carBrand" name="carBrand" required>
+                    <option value="0" disabled selected>Selecione Uma Marca</option>
+                </select>
+            </section> 
+            <!-- Section do modelo do carro (é filtrada de acordo com a Marca selecionada) -->
+            <section id="modelSection" class="hidden"> <!--class="hidden"--> <!-- (for, id, name) carModel -->
+                <label for="carModel">Informe o Modelo do Veículo:</label><br>
+                <select id="carModel" name="carModel" required>
+                    <option value="0" disabled selected>Selecione um Modelo</option>
+                </select>
+            </section>
+            <!-- Section do ano do Modelo do carro (é filtrada de acordo com o modelo selecionado) -->
+            <section id="yearSection" class="hidden"> <!--class="hidden"--> <!-- (for, id, name) carYear -->
+                <label for="carYear">Informe o Ano do Veículo:</label><br>
+                <select id="carYear" name="carYear" required>
+                    <option value="0" disabled selected>Selecione um Ano</option>
+                </select>
+            </section>
+        </section>
+
+        <div id="confirmcarselectionButton"> <!--class="hidden"-->
+            <div class="button-wrapper">
+                <input type="button" value="Confirmar Modelo" onclick="confirmcarselectionButton()">
+            </div>
+        </div>
+
+        <!-- Tipo de chassis -->
+        <section id="typeSection" class="hidden"> <!--class="hidden"-->
+            <label for="optChassys">Selecione o Tipo de Chassy:</label><br>
+            <label> <!-- (for, id, name) optChassys, value: Mini -->
+                <input type="radio" id="optChassysMini" name="optChassys" value="Mini" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Mini</div>
+                    <img src="../img/forms/chassis/Mini.png" alt="Mini" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassys, value: Hatchback -->
+                <input type="radio" id="optChassysHatchback" name="optChassys" value="Hatchback" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Hatchback</div>
+                    <img src="../img/forms/chassis/Hatchback.png" alt="Hatchback" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassys, value: Sedan -->
+                <input type="radio" id="optChassysSedan" name="optChassys" value="Sedan" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Sedan</div>
+                    <img src="../img/forms/chassis/Sedan.png" alt="Sedan" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassys, value: SUV -->
+                <input type="radio" id="optChassysSUV" name="optChassys"  value="SUV" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">SUV</div>
+                    <img src="../img/forms/chassis/SUV.png" alt="SUV" class="radio-img" >
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassys, value: Pickup -->
+                <input type="radio" id="optChassysPickup" name="optChassys"  value="Pickup" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Pickup</div>
+                    <img src="../img/forms/chassis/Pickup.png" alt="Pickup" class="radio-img">
+                </div>
+            </label>
+
+            <div id="ConfirmChassysSelectionButton"> <!--class="hidden"-->
+                <div class="button-wrapper">
+                    <input type="button" value="Confirmar Chassys"onclick="ConfirmChassysSelectionButton()" > <!--onclick="confirm()"-->
+                </div>
+            </div>
+
+            <!-- Serviços desejados -->
+            <section id="preferencesSection" class="hidden"> <!--class="hidden"-->
+                <label for="services">Selecione os Serviços Desejados:</label><br>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="Paintjob" name="Paintjob" value="Paintjob" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Pintura</h4>
+                            <ul>
+                                <li>Tipo de pintura</li>
+                                <li>Cor</li>
+                                <li>Insulfilm</li>
+                                <li>Mascaras para Faróis</li>
+                            </ul>
+                        </div>
+                        <img src="../img/forms/carServices/paintjob.png" alt="Paintjob" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox"> 
+                    <input type="checkbox" id="Wheels" name="Wheels" value="Wheels" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Rodas</h4>
+                            <ul>
+                                <li>Aros de Liga Leve</li>
+                                <li>Cor do Aro</li>
+                                <li>Tamanho do Aro</li>
+                                <li>Perfil do Pneu</li>
+                            </ul>
+                        </div>
+                        <img src="../img/forms/carServices/wheels.png" alt="Wheels" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox"> 
+                    <input type="checkbox" id="Engine" name="Engine" value="Engine" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Motor</h4>
+                            <ul>
+                                <li>Instalar Turbo</li>
+                                <li>Kit de Melhorias</li>
+                                <li>Sistema de Exaustão</li>
+                                <li>Injeção Direta</li>
+                            </ul>
+                        </div>
+                        <img src="../img/forms/carServices/motor.png" alt="Engine" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox"> 
+                    <input type="checkbox" id="Chassys" name="Chassys" value="Chassys" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Chassis</h4>
+                            <ul>
+                                <li>Alterar Chassis</li>
+                                <li>Kit Body de Saia</li>
+                                <li>Kit Aerofólio</li>
+                                <li>Kit Retrovisor</li>
+                            </ul>
+                        </div>
+                        <img src="../img/forms/carServices/chassis.png" alt="Chassys" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox"> 
+                    <input type="checkbox" id="Interior" name="Interior" value="Interior" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Interior</h4>
+                            <ul>
+                                <li>Recapamento de Bancos</li>
+                                <li>Troca de Forro</li>
+                                <li>Instalação de MediaNav</li>
+                                <li>Alteração do Painel</li>
+                            </ul>
+                        </div>
+                        <img src="../img/forms/carServices/interior.png" alt="Interior" class="checkbox-img">
+                    </div>
+                </label>
+            </section>
+        </section>
+
+        <div id="ConfirmServicesSelectionButton" class="hidden"> <!--class="hidden"-->
+            <div class="button-wrapper">
+                <input type="button" value="Confirmar Serviços" onclick="ConfirmServicesSelectionButton()">
+            </div>
+        </div> 
+
+        <section id="PaintJobSection" class="hidden"> <!--class="hidden"-->
+            <h2>Pintura</h2>
+            <!-- Tupos de Pintura -->
+            <label for="optPaintJob">Selecione o Tipo de Pintura:</label><br>
+            <label> <!-- (for, id, name) optPaintJob, value: Não Pintar -->
+                <input type="radio" name="optPaintJob" value="Não Pintar" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Não Pintar</div>
+                    <img src="../img/forms/paintjobs/npaint.png" alt="Não Pintar" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optPaintJob, value: Pintura Sólida -->
+                <input type="radio" name="optPaintJob" value="Pintura Sólida" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Pintura Sólida</div>
+                    <img src="../img/forms/paintjobs/solid.png" alt="Pintura Sólida" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optPaintJob, value: Pintura Metálica -->
+                <input type="radio" name="optPaintJob" value="Pintura Metálica" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Pintura Metálica</div>
+                    <img src="../img/forms/paintjobs/metalic.png" alt="Pintura Metálica" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optPaintJob, value: Pintura Perolizada -->
+                <input type="radio" name="optPaintJob" value="Pintura Perolizada" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Pintura Perolizada</div>
+                    <img src="../img/forms/paintjobs/perolizada.png" alt="Pintura Perolizada" class="radio-img">
+                </div>
+            </label>
+            
+            <br>
+            <section id="PaintJobColorSection" class="hidden">
+                <label for="optPaintJobColor">Selecione a Cor:</label><br>
+                <label> <!-- (for, id, name) optPaintJobColor, value: Vermelho -->
+                    <input type="radio" name="optPaintJobColor" value="Vermelho" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(220, 18, 18); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optPaintJobColor, value: Azul -->
+                    <input type="radio" name="optPaintJobColor" value="Azul" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(18, 14, 98); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optPaintJobColor, value: Preto -->
+                    <input type="radio" name="optPaintJobColor" value="Preto" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(0, 0, 0); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optPaintJobColor, value: Branco -->
+                    <input type="radio" name="optPaintJobColor" value="Branco" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(255, 255, 255); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optPaintJobColor, value: Cinza -->
+                    <input type="radio" name="optPaintJobColor" value="Cinza" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(82, 78, 78); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+            </section>
+
+            <br>
+            <label for="optInsulfilm">Selecione o Insulfilm</label><br>
+            <label> <!-- (for, id, name) optInsulfilm, value: Sem Insulfilm -->
+                <input type="radio" name="optInsulfilm" value="Sem Insulfilm" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border: 2px solid black; border-radius: 10%;">Sem</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optInsulfilm, value: 50G -->
+                <input type="radio" name="optInsulfilm" value="50G" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.50); border: 2px solid black; border-radius: 10%;">50%</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optInsulfilm, value: 20G -->
+                <input type="radio" name="optInsulfilm" value="20G" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgb(0, 0, 0, 0.80); border: 2px solid black; border-radius: 10%;">20%</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optInsulfilm, value: 10G -->
+                <input type="radio" name="optInsulfilm" value="10G" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgb(0, 0, 0, 0.90); border: 2px solid black; border-radius: 10%;">10%</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optInsulfilm, value: 5G -->
+                <input type="radio" name="optInsulfilm" value="5G" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgb(0, 0, 0, 0.95); border: 2px solid black; border-radius: 10%;">5%</div>
+                </div>
+            </label>
+
+            <br>
+            <label for="optLightMask">Deseja Mascaras para os Farois?</label><br>
+            <label> <!-- (for, id, name) optLightMask, value: sim -->
+                <input type="radio" name="optLightMask" value="Sim" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border: 2px solid black; border-radius: 10%;">Sim</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optLightMask, value: não -->
+                <input type="radio" name="optLightMask" value="Não" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border: 2px solid black; border-radius: 10%;">Não</div>
+                </div>
+            </label>
+        </section>
+
+        <section id="WheelSection" class="hidden"> <!--class="hidden"-->
+            <h2>Rodas</h2>
+            <!-- Configuração das Rodas -->
+            <label for="optLightAlloyWheels">Deseja Rodas de Liga Leve?</label><br>
+            <label> <!-- (for, id, name) optLightAlloyWheels, value: sim -->
+                <input type="radio" name="optLightAlloyWheels" value="sim" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border: 2px solid black; border-radius: 10%;">Sim</div>
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optLightAlloyWheels, value: não -->
+                <input type="radio" name="optLightAlloyWheels" value="não" hidden>
+                <div class="selection-container">
+                    <div style="width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0); border: 2px solid black; border-radius: 10%;">Não</div>
+                </div>
+            </label>
+            
+            <br>
+            <section id="WheelColorSection" class="hidden">
+                <label for="optWheelColor">Selecione a cor da Roda(Aro): </label><br>
+                <label> <!-- (for, id, name) optWheelColor, value: Vermelho -->
+                    <input type="radio" name="optWheelColor" value="Vermelho" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(220, 18, 18); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optWheelColor, value: Azul -->
+                    <input type="radio" name="optWheelColor" value="Azul" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(18, 14, 98); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optWheelColor, value: Preto -->
+                    <input type="radio" name="optWheelColor" value="Preto" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(0, 0, 0); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optWheelColor, value: Branco -->
+                    <input type="radio" name="optWheelColor" value="Branco" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(255, 255, 255); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+                <label> <!-- (for, id, name) optWheelColor, value: Cinza -->
+                    <input type="radio" name="optWheelColor" value="Cinza" hidden>
+                    <div class="selection-container">
+                        <div style="width: 40px; height: 40px; background-color: rgb(82, 78, 78); border: 2px solid black; border-radius: 50%;"></div>
+                    </div>
+                </label>
+
+                <br>
+                <label for="txtwheelsize">Escolha o Tamanho do Aro:</label><br>
+                <label> <!-- (for, id, name) txtwheelsize, value: 13 to 24 step 0.5 -->
+                    <input type="number" name="txtwheelsize" id="txtwheelsize" min="13" max="24" step="0.5">
+                </label>
+            </section>
+
+            <br>
+            <label for="txtwheelperfil">Escolha o Perfil do Pneu:</label><br>
+            <label> <!-- (for, id, name) txtwheelperfil, value: 50 to 75 step 5 -->
+                <input type="number" name="txtwheelperfil" id="txtwheelperfil" min="50" max="75" step="5">
+            </label>
+        </section>
+
+        <section id="EngineSection" class="hidden"> <!--class="hidden"-->
+            <h2>Motor</h2>
+            <!-- Alterações de Motor -->
+            <label for="motorservices">Selecione os itens que deseja incluir:</label><br>
+            <section id="motorservicesSection"> <!--class="hidden"-->
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="Turbo" name="Turbo" value="Turbo" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Instalação de Turbo</h4>
+                        </div>
+                        <img src="../img/forms/motor/turbo.png" alt="Turbo" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="kitmelhorias" name="kitmelhorias" value="Kit de Melhorias" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Instalação do Kit de Melhorias para Motor</h4>
+                        </div>
+                        <img src="../img/forms/motor/filtro-de-ar.png" alt="kitmelhorias" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="sistemaexaustao" name="sistemaexaustao" value="Sistema de Exaustão" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Instalação de um novo Sistema de Exaustão</h4>
+                        </div>
+                        <img src="../img/forms/motor/tubo-de-escape.png" alt="sistemaexaustao" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="Injecaodir" name="Injecaodir" value="Kit de Injeção Direta" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Instalação do Kit de Injeção Direta</h4>
+                        </div>
+                        <img src="../img/forms/motor/vela-de-ignicao.png" alt="Injecaodir" class="checkbox-img">
+                    </div>
+                </label>
+            </section>
+
+            <!--AREA DE TEXTO-->
+            <label for="motorservicesdescription">Faça uma breve descrição do que deseja com as modificações:</label><br>
+            <textarea id="motorservicesdescription" name="motorservicesdescription"></textarea><br>
+        </section>
+
+        <section id="ChassysSection" class="hidden"> <!--class="hidden"-->
+            <h2>Chassis</h2>
+            <!-- Alterações do chassis-->
+            <label for="optChassysAlt">Aleterações no Chassis</label><br>
+            <label> <!-- (for, id, name) optChassysAlt, value: Não Alterar -->
+                <input type="radio" name="optChassysAlt" value="Não Alterar" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Não desejo Alterar o Chassis</div>
+                    <img src="../img/forms/modChassys/nochassy.png" alt="NãoAlterar" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassysAlt, value: Tornar Conversível -->
+                <input type="radio" name="optChassysAlt" value="Tornar Conversível" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Tornar Conversível</div>
+                    <img src="../img/forms/modChassys/conversivel.png" alt="tornarconversivel" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassysAlt, value: Tornar Pickup -->
+                <input type="radio" name="optChassysAlt" value="Tornar Pickup" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Tornar Pickup</div>
+                    <img src="../img/forms/modChassys/pickup.png" alt="tornarpickup" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optChassysAlt, value: Teto Solar -->
+                <input type="radio" name="optChassysAlt" value="Teto Solar" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Instalar Teto Solar</div>
+                    <img src="../img/forms/modChassys/sunroof.png" alt="tetosolar" class="radio-img">
+                </div>
+            </label>
+
+            <br>
+            <label for="bodykit">Instalar Kit de Body e Saia</label><br>
+            <section id="bodykitSection"> <!--class="hidden"-->
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="frontalbodykit" name="frontalbodykit" value="Kit de Saias Frontal" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Kit de Saias Frontal</h4>
+                        </div>
+                        <img src="../img/forms/modChassys/frontbk.png" alt="frontalbodykit" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="sidebodykit" name="sidebodykit" value="Kit de Saias Lateral" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Kit de Saias Lateral</h4>
+                        </div>
+                        <img src="../img/forms/modChassys/lateralbk.png" alt="kitbodylateral" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="backbodykit" name="backbodykit" value="Kit de Saias Traseiro" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Kit de Saias Traseiro</h4>
+                        </div>
+                        <img src="../img/forms/modChassys/backbk.png" alt="kitbodytraseiro" class="checkbox-img">
+                    </div>
+                </label>
+            </section>
+
+            <br>
+            <label for="optaerokit">Instalar Kit de Aerofólio</label><br>
+            <label> <!-- (for, id, name) optaerokit, value: Não Instalar -->
+                <input type="radio" name="optaerokit" value="Não Instalar" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Não quero Aerofólio</div>
+                    <img src="../img/forms/modChassys/nochassy.png" alt="Não Instalar" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optaerokit, value: Aerofólio Instavel -->
+                <input type="radio" name="optaerokit" value="Aerofólio Instavel" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Aerofólio Instavel</div>
+                    <img src="../img/forms/modChassys/aeroinst.png" alt="Aerofólio Instavel" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optaerokit, value: Aerofólio Estavel -->
+                <input type="radio" name="optaerokit" value="Aerofólio Estavel" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Aerofólio Estavel</div>
+                    <img src="../img/forms/modChassys/aeroest.png" alt="Aerofólio Estavel" class="radio-img">
+                </div>
+            </label>
+
+            <br>
+            <label for="optmirrorkit">Instalar Kit de Retrovisores</label><br>
+            <label> <!-- (for, id, name) optmirrorkit, value: Não Instalar -->
+                <input type="radio" name="optmirrorkit" value="Não Instalar" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Não Instalar Kit Retrovisor</div>
+                    <img src="../img/forms/modChassys/nochassy.png" alt="Não Instalar" class="radio-img">
+                </div>
+            </label>
+            <label> <!-- (for, id, name) optmirrorkit, value: Kit Retrovisor -->
+                <input type="radio" name="optmirrorkit" value="Kit Retrovisor" hidden>
+                <div class="selection-container">
+                    <div class="radio-title">Instalar Kit Retrovisor</div>
+                    <img src="../img/forms/modChassys/kitretrovisor.png" alt="Kit Retrovisor" class="radio-img">
+                </div>
+            </label>
+        </section>
+
+        <section id="InteriorSection" class="hidden"> <!--class="hidden"-->
+            <h2>Interior</h2>
+                
+            <label for="motorservices">Selecione os itens que deseja incluir:</label><br>
+            <section> 
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="Recapamentobanco" name="Recapamentobanco" value="Recapamento de Bancos" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Recapamento de Bancos</h4>
+                        </div>
+                        <img src="../img/forms/interior/recapamentodebanco.png" alt="Recapamentobanco" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="TrocarForro" name="TrocarForro" value="Troca de Forro" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Troca de Forro</h4>
+                        </div>
+                        <img src="../img/forms/interior/trocadeforro.png" alt="TrocarForro" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="medianav" name="medianav" value="Instação de MediaNav" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Instação de MediaNav</h4>
+                        </div>
+                        <img src="../img/forms/interior/medianav.png" alt="medianav" class="checkbox-img">
+                    </div>
+                </label>
+                <label class="servicescheckbox">
+                    <input type="checkbox" id="altpanel" name="altpanel" value="Alteração do Painel" hidden>
+                    <div class="selection-container">
+                        <div class="checkbox-title">
+                            <h4>Alteração do Painel</h4>
+                        </div>
+                        <img src="../img/forms/interior/injdireta.png" alt="Injecaodir" class="checkbox-img">
+                    </div>
+                </label>
+            </section>
+
+            <!--AREA DE TEXTO-->
+            <label for="interiorservicesdescription">Faça uma breve descrição do que deseja com as modificações:</label><br>
+            <textarea name="interiorservicesdescription" id="interiorservicesdescription"></textarea><br>
+
+        </section>
+
+        <div style="display: flex; justify-content: center; align-items: center; height: 100px;">
+            <div id="submitbutton" class="hidden">
+                <input type="submit" value="Enviar Formulário" onclick="Submitall(event)">
+            </div>
+        </div>
+        <div>
+            <div id="ResetButton" class="button-wrapper">
+                <button type="button" onclick="resetForm()">Reset</button>
+            </div>
+        </div>
+        
+    </form>
+</body>
+<script>
+
+    /* PARTE 1 - INFORMANDO MARCA, MODELO E ANO DO VEHICULO
+
+    /* fetch: Envia uma requisição HTTP para o endpoint da API especificado.
+       await fetch(...): Aguarda a conclusão da requisição fetch.
+       response/carBrands: São variáveis e podem ser renomeadas conforme necessário.
+       response.json(): Transforma a resposta em formato JSON. */
+
+    /* Funções assíncronas (ou asynchronous) não esperam outras funções serem concluídas antes de executar */
+    /* Esta função busca as marcas de carros da API FIPE e gera "options" no elemento select com id "carBrand" */
+    async function fetchCarBrands() {
+        /* const declara variáveis que não podem ser reatribuídas (response, carBrands, select e option são variáveis) */
+        const response = await fetch('https://parallelum.com.br/fipe/api/v1/carros/marcas');
+        const carBrands = await response.json();  // Faz o parsing dos dados JSON da resposta
+
+        const select = document.getElementById('carBrand');  // Seleciona o elemento <select> com id "carBrand"
+        carBrands.forEach(brand => {
+            const option = document.createElement('option');  // Cria um novo elemento <option>
+            option.value = brand.codigo;  // Define o valor do <option> como o código da marca
+            option.textContent = brand.nome;  // Define o texto de exibição do <option> como o nome da marca
+            select.appendChild(option);  // Adiciona o <option> ao elemento <select>
+        });
+    }
+
+    /* Esta função busca os modelos de carros da API FIPE com base no ID da marca selecionada e gera "options" no elemento select com id "carModel" */
+    /* Ela utiliza o "brandId" obtido do select anterior */
+    async function fetchCarModels(brandId) {
+        const response = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos`);
+        const data = await response.json();  // Faz o parsing dos dados JSON da resposta
+        const carModels = data.modelos;  // Extrai a lista de modelos de carros dos dados
+
+        const select = document.getElementById('carModel');  // Seleciona o elemento <select> com id "carModel"
+        select.innerHTML = '<option value="0" disabled selected>Selecione um Modelo</option>';  // Reseta as opções
+        carModels.forEach(model => {
+            const option = document.createElement('option');  // Cria um novo elemento <option>
+            option.value = model.codigo;  // Define o valor do <option> como o código do modelo
+            option.textContent = model.nome;  // Define o texto de exibição do <option> como o nome do modelo
+            select.appendChild(option);  // Adiciona o <option> ao elemento <select>
+        });
+    }
+
+    /* Esta função busca os anos de fabricação dos carros da API FIPE com base no ID da marca e do modelo selecionados e gera "options" no elemento select com id "carYear" */
+    /* Ela utiliza o "brandId" e o "modelId" obtidos dos selects anteriores */
+    async function fetchCarYears(brandId, modelId) {
+        const response = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos/${modelId}/anos`);
+        const carYears = await response.json();  // Faz o parsing dos dados JSON da resposta
+
+        const select = document.getElementById('carYear');  // Seleciona o elemento <select> com id "carYear"
+        select.innerHTML = '<option value="0" disabled selected>Selecione um Ano</option>';  // Reseta as opções
+        carYears.forEach(year => {
+            const option = document.createElement('option');  // Cria um novo elemento <option>
+            option.value = year.codigo;  // Define o valor do <option> como o código do ano
+            option.textContent = year.nome;  // Define o texto de exibição do <option> como o nome do ano
+            select.appendChild(option);  // Adiciona o <option> ao elemento <select>
+        });
+    }
+
+    /* Listener de evento para quando a marca de carro é alterada */
+    document.getElementById('carBrand').addEventListener('change', function () {
+        const brandId = this.value;  // Obtém o ID da marca selecionada
+        const modelSection = document.getElementById('modelSection');  // Seleciona a seção para modelos de carro
+        const yearSection = document.getElementById('yearSection');  // Seleciona a seção para anos de carro
+
+        // Reseta e esconde as seções de modelos e anos
+        document.getElementById('carModel').innerHTML = '<option value="0" disabled selected>Selecione um Modelo</option>';
+        document.getElementById('carYear').innerHTML = '<option value="0" disabled selected>Selecione um Ano</option>';
+        modelSection.classList.add('hidden');
+        yearSection.classList.add('hidden');
+
+        if (brandId !== "0") {
+            fetchCarModels(brandId);  // Busca os modelos de carro se uma marca válida for selecionada
+            modelSection.classList.remove('hidden');  // Exibe a seção de modelos
+        }
+    });
+
+    /* Listener de evento para quando o modelo de carro é alterado */
+    document.getElementById('carModel').addEventListener('change', function () {
+        const brandId = document.getElementById('carBrand').value;  // Obtém o ID da marca selecionada
+        const modelId = this.value;  // Obtém o ID do modelo selecionado
+        const yearSection = document.getElementById('yearSection');  // Seleciona a seção para anos de carro
+
+        // Reseta e esconde a seção de anos
+        document.getElementById('carYear').innerHTML = '<option value="0" disabled selected>Selecione um Ano</option>';
+        yearSection.classList.add('hidden');
+
+        if (modelId !== "0") {
+            fetchCarYears(brandId, modelId); // // Busca os anos disponíveis do modelo
+            yearSection.classList.remove('hidden');  // Exibe o botão confirma
+        }
+    });
+
+    /* Listener de evento para quando o ano e alterado */
+    document.getElementById('carYear').addEventListener('change', function () {
+        const yearId = this.value;  // Obtém o ID da ano selecionado
+        const confirmbutton01 = document.getElementById('confirmbutton01');  // Seleciona a seção para anos de carro
+
+        // Reseta e esconde o botão
+        confirmbutton01.classList.add('hidden');
+
+        if (yearId  !== "0") {
+            confirmbutton01.classList.remove('hidden');  // Exibe a seção de modelos
+        }
+    });
+
+    /* Função do botão confirma, */
+    function confirmcarselectionButton() {
+        const brandSelect = document.getElementById("carBrand");
+        const modelSelect = document.getElementById("carModel");
+        const yearSelect = document.getElementById("carYear");
+
+        const selectedBrand = brandSelect.options[brandSelect.selectedIndex].text;
+        const selectedModel = modelSelect.options[modelSelect.selectedIndex].text;
+        const selectedYear = yearSelect.options[yearSelect.selectedIndex].text;
+
+        if (brandSelect.value !== "0" && modelSelect.value !== "0" && yearSelect.value !== "0") {
+            // A função disabled bloqueia os dados já digitados/escolhidos pelo usuario previnindo futuras alterações 
+            brandSelect.disabled = true;
+            modelSelect.disabled = true;
+            yearSelect.disabled = true;
+
+            // Esconder o botão confirma
+            document.getElementById("confirmcarselectionButton").classList.add("hidden");
+
+            // Libera a Parte 2 do formulario
+            document.getElementById("typeSection").classList.remove("hidden");
+            document.getElementById("ConfirmChassysSelectionButton").classList.remove("hidden");
+        } else {
+            alert("Por favor, selecione todas as opções.");
+        }
+    }
+
+    // Botão de confirmar os Chassys do carro
+    function ConfirmChassysSelectionButton() {
+    // verifica se pelo menos um item radio está checkado
+    const selectedChassy = document.querySelector('input[name="optChassys"]:checked'); // Variavel True/False
+    
+    if (!selectedChassy) {
+        alert("Erro: Selecione um tipo de chassi.");
+        return; // para a execução
+    }
+    
+    // Trava cada botao radio que acaba travando toda a Section 
+    const typeSection = document.getElementById('typeSection');
+    const inputs = typeSection.querySelectorAll('input[type="radio"]');
+    inputs.forEach(input => {
+        input.disabled = true; // Desabilita os botões de radio
+    });
+
+    // Mostra preferencesSection
+    const preferencesSection = document.getElementById('preferencesSection');
+    preferencesSection.classList.remove('hidden'); // Mostra a section
+
+    // Unhide ConfirmServicesSelectionButton
+    const confirmServicesSelectionButton = document.getElementById('ConfirmServicesSelectionButton');
+    confirmServicesSelectionButton.classList.remove('hidden'); // motra o botao
+
+    const ConfirmChassysSelectionButton = document.getElementById('ConfirmChassysSelectionButton');
+    ConfirmChassysSelectionButton.classList.add('hidden');
+
+    }
+
+    // Botão de confirmar os Serviços desejados
+    function ConfirmServicesSelectionButton() {
+        // Pegando as checkboxes da Section "preferencesSection"
+        const selectedServices = [];
+        const checkboxes = document.querySelectorAll('#preferencesSection input[type="checkbox"]');
+
+        // função push, adiciona a variavel a lista
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                selectedServices.push(checkbox.value);
+            }
+        });
+        
+        if (selectedServices.length !== 0) {
+            // Desabilitar as checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = true;
+            });
+
+
+            // Esconder o botão confirma
+            document.getElementById("ConfirmServicesSelectionButton").classList.add("hidden");
+
+            // Libera a Parte 4 do formulario
+            if (selectedServices.includes("Paintjob")) {
+                document.getElementById("PaintJobSection").classList.remove("hidden");
+            } 
+            if (selectedServices.includes("Wheels")) {
+                document.getElementById("WheelSection").classList.remove("hidden");
+            }
+            if (selectedServices.includes("Engine")) {
+                document.getElementById("EngineSection").classList.remove("hidden");
+            }
+            if (selectedServices.includes("Chassys")) {
+                document.getElementById("ChassysSection").classList.remove("hidden");
+            }
+            if (selectedServices.includes("Interior")) {
+                document.getElementById("InteriorSection").classList.remove("hidden");
+            }
+            document.getElementById("submitbutton").classList.remove("hidden");
+        } else {
+            alert("Nenhum serviço selecionado.");
+            event.preventDefault(); // previne o botão submit de executar 
+            return;
+        }
+    }
+
+    // Listener de Aceitação de Roda de Liga Leva
+    document.addEventListener('DOMContentLoaded', () => {
+        const PaintJobRadios = document.querySelectorAll('input[name="optPaintJob"]');
+        const PaintJobColorSection = document.getElementById('PaintJobColorSection');
+
+        // Função para esconder e mostrar a Section
+        function handlePaintJobsPaintChange() {
+            const isCheckedSim = Array.from(PaintJobRadios).some(radio => radio.checked && radio.value !== "Não Pintar");
+            if (isCheckedSim) {
+                PaintJobColorSection.style.display = 'block'; // Mostra WheelColorSection
+            } else {
+                PaintJobColorSection.style.display = 'none'; // Esconde WheelColorSection
+            }
+        }
+
+        // Evento de Listener
+        PaintJobRadios.forEach(radio => {
+            radio.addEventListener('change', handlePaintJobsPaintChange);
+        });
+
+        // Verificação inicial da página
+        handlePaintJobsPaintChange();
+    });
+
+    // Listener de Aceitação de Roda de Liga Leva
+    document.addEventListener('DOMContentLoaded', () => {
+        const lightAlloyWheelsRadios = document.querySelectorAll('input[name="optLightAlloyWheels"]');
+        const wheelColorSection = document.getElementById('WheelColorSection');
+
+        // Função para esconder e mostrar a Section
+        function handleLightAlloyWheelsChange() {
+            const isCheckedSim = Array.from(lightAlloyWheelsRadios).some(radio => radio.checked && radio.value === "sim");
+            if (isCheckedSim) {
+                wheelColorSection.style.display = 'block'; // Mostra WheelColorSection
+            } else {
+                wheelColorSection.style.display = 'none'; // Esconde WheelColorSection
+            }
+        }
+
+        // Evento de Listener
+        lightAlloyWheelsRadios.forEach(radio => {
+            radio.addEventListener('change', handleLightAlloyWheelsChange);
+        });
+
+        // Verificação inicial da página
+        handleLightAlloyWheelsChange();
+    });
+
+    // Botão Submit!!
+    function Submitall(event) {
+        // Criando as listas
+        const selectedServices = [];
+        const InteriorServices = [];
+        const bodykitServices = [];
+        const EngineServices = [];
+
+        //Recuperando valores da primeira parte
+        const brandSelect = document.getElementById("carBrand");
+        const modelSelect = document.getElementById("carModel");
+        const yearSelect = document.getElementById("carYear");
+
+        const selectedBrand = brandSelect.options[brandSelect.selectedIndex].text;  // Obtém o texto da marca selecionada
+        const selectedModel = modelSelect.options[modelSelect.selectedIndex].text;  // Obtém o texto do modelo selecionado
+        const selectedYear = yearSelect.options[yearSelect.selectedIndex].text; // Obtém o texto do ano selecionado
+
+        //Recuperando valor do chassis
+        const selectedChassy = document.querySelector('input[name="optChassys"]:checked')
+
+        // Pegando os dados somente da Section "preferencesSection"
+        const preferencesSection = document.getElementById('preferencesSection');
+
+        // Pegando as checkboxes da Section "preferencesSection"
+        const checkboxes = preferencesSection.querySelectorAll('input[type="checkbox"]');
+
+        // função push, adiciona a variavel a lista
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                selectedServices.push(checkbox.value);
+            }
+        });
+
+        let message = "Marca: " + selectedBrand + "\n" +
+                        "Ano: " + selectedYear + "\n" + 
+                        "Modelo: " + selectedModel + "\n\n" +
+                        "Tipo de Chassis: " + selectedChassy.value + "\n\n" + 
+                        "Serviços Selecionados: " + selectedServices.join(", ") + "\n\n";
+
+
+        // Caso a checkbox de Pintura foi marcada.
+        if (selectedServices.includes("Paintjob")) {
+            const paintjobSection = document.getElementById('PaintJobSection');
+            message += "Serviços de Pintura Selecionados: \n";
+
+            // Radio Tipos de Pintura
+            const optPaintJob = paintjobSection.querySelectorAll('input[name="optPaintJob"]');
+            let optPaintJobsisChecked = false;
+            let optPaintJobValue = null;
+            
+            // verificando se algum botão radio está selecionado
+            optPaintJob.forEach(radio => {
+                if (radio.checked) {
+                    optPaintJobValue = radio.value
+                    optPaintJobsisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!optPaintJobsisChecked) {
+                alert("Erro: Por favor, Selecione qual tipo de Pintura Desejas.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Tipo de Pintura: " + optPaintJobValue + "\n";
+            // if caso valor do botão seja diferente de Não Pintar
+            if (optPaintJobValue !== "Não Pintar") {
+                const optPaintJobColor = paintjobSection.querySelectorAll('input[name="optPaintJobColor"]');
+                let optPaintJobsColorisChecked = false;
+                let optPaintJobsColorValue = null;
+
+                // verificando se algum botão radio está selecionado
+                optPaintJobColor.forEach(radio => {
+                if (radio.checked) {
+                    optPaintJobsColorValue = radio.value
+                    optPaintJobsColorisChecked = true;
+                    }
+                });
+
+                //  se nenhum botão radio está selecionado
+                if (!optPaintJobsColorisChecked) {
+                    alert("Erro: Por favor, Selecione a cor que deseja!.");
+                    event.preventDefault(); // previne o botão submit de executar
+                    return; // Para a execução do programa casa haja erro
+                }
+                message += "Cor: " + optPaintJobsColorValue + "\n";
+            }
+
+            // Radio Insulfilm
+            const optInsulfilm = paintjobSection.querySelectorAll('input[name="optInsulfilm"]');
+            let optInsulfilmisChecked = false;
+            let optInsulfilmValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optInsulfilm.forEach(radio => {
+                if (radio.checked) {
+                    optInsulfilmValue = radio.value
+                    optInsulfilmisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!optInsulfilmisChecked) {
+                alert("Erro: Por favor, Selecione qual tipo de Insulfilm Desejas.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Insulfilm: " + optInsulfilmValue + "\n";
+
+            // Radio Mascara de Luz
+            const optLightMask = paintjobSection.querySelectorAll('input[name="optLightMask"]');
+            let optLightMaskisChecked = false;
+            let optLightMaskValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optLightMask.forEach(radio => {
+                if (radio.checked) {
+                    optLightMaskValue = radio.value
+                    optLightMaskisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!optLightMaskisChecked) {
+                alert("Erro: Por favor, Selecione Se Desejas Máscasras nos faróis.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Máscara de Farol: " + optLightMaskValue + "\n\n";
+            
+            if (optPaintJobValue === "Não Pintar" && optInsulfilmValue === "Sem Insulfilm" && optLightMaskValue === "Não") {
+                alert("Erro: Por favor, Selecione ou uma pintura, ou Insufilm ou Máscara de Farol.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+
+        }
+
+        // Caso a checkbox de Rodas foi marcada.
+        if (selectedServices.includes("Wheels")) {
+            const wheelsSection = document.getElementById('WheelSection');
+            message += "Serviços de Rodas Selecionados: \n";
+
+            // Radio Rodas de Liga Leve
+            const optLightAlloyWheels = wheelsSection.querySelectorAll('input[name="optLightAlloyWheels"]');
+            let LightAlloyWheelsisChecked = false;
+            let LightAlloyWheelsValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optLightAlloyWheels.forEach(radio => {
+                if (radio.checked) {
+                    LightAlloyWheelsAltValue = radio.value
+                    LightAlloyWheelsisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!LightAlloyWheelsisChecked) {
+                alert("Erro: Por favor, Selecione se deseja Rodas de Liga leve ou não.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Rodas de Liga leve: " + LightAlloyWheelsAltValue + "\n";
+            
+            // if caso valor do botão seja sim
+            if (LightAlloyWheelsAltValue === "sim") {
+                const optWheelColor = wheelsSection.querySelectorAll('input[name="optWheelColor"]');
+                let optWheelColorisChecked = false;
+                let optWheelColorValue = null;
+
+                // verificando se algum botão radio está selecionado
+                optWheelColor.forEach(radio => {
+                if (radio.checked) {
+                    optWheelColorValue = radio.value
+                    optWheelColorisChecked = true;
+                    }
+                });
+
+                //  se nenhum botão radio está selecionado
+                if (!optWheelColorisChecked) {
+                    alert("Erro: Por favor, Selecione a cor que deseja nas rodas.");
+                    event.preventDefault(); // previne o botão submit de executar
+                    return; // Para a execução do programa casa haja erro
+                }
+
+                const wheelSizeInput = document.getElementById('txtwheelsize');
+                const wheelsizevalue = parseFloat(wheelSizeInput.value);
+                if (wheelsizevalue < 13 || wheelsizevalue > 24 || isNaN(wheelsizevalue)) {
+                    alert("Erro: O Tamanho do Aro deve Estar entre 13 e 24.");
+                    event.preventDefault(); // previne o botão submit de executar
+                    return;
+                }
+                message += "Cor do Aro: " + optWheelColorValue + "\n" +
+                           "Tamanho do Aro: " + wheelsizevalue + "\n";
+                
+            }
+
+            // verificando se o pefil do pneu escolhido está correto
+            const wheelPerfilInput = document.getElementById('txtwheelperfil');
+            const wheelperfivalue = parseFloat(wheelPerfilInput.value);
+            if (wheelperfivalue < 50 || wheelperfivalue > 75 || isNaN(wheelperfivalue)) {
+                alert("Erro: O perfil do pneu deve estar entre 50 e 75.");
+                event.preventDefault(); // previne o botão submit de executar
+                return;
+            }
+            message += "Tamanho do Perfil: " + wheelperfivalue + "\n\n";
+        }
+
+        // Caso a checkbox Motor foi marcada.
+        if (selectedServices.includes("Engine")) {
+            const engineSection = document.getElementById('EngineSection');
+            const engineCheckboxes = engineSection.querySelectorAll('input[type="checkbox"]');
+            message += "Serviços de Motor Selecionados:  \n";
+
+            engineCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    EngineServices.push(checkbox.value);
+                }
+            });
+
+            // Se o servico interior esta selecionado, mostra um erro e previne o botao submit de executar
+            if (EngineServices.length === 0) {
+                alert("Erro: Por favor, selecione pelo menos um serviço de Motor.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+
+            // Garantindo que a caixa de texto seja preenchida
+            const motorservicesDescription = document.getElementById('motorservicesdescription').value.trim();
+            // número mínimo de caractéres
+            if (motorservicesDescription.length < 10) {
+                alert("Erro: A descrição dos serviços de Motor deve ter pelo menos 10 caracteres.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += EngineServices.join("\n") + "\n" + "Observações: " + motorservicesDescription + "\n\n"; 
+
+        }
+
+        // Caso a checkbox Chassis foi marcada.
+        if (selectedServices.includes("Chassys")) {
+            const chassysSection = document.getElementById('ChassysSection');
+            const chassysCheckboxes = chassysSection.querySelectorAll('input[type="checkbox"]');
+            message += "Serviços de Chassis Selecionados: \n";
+
+            // Radio Alteração de Chassys
+            const optChassysAlt = chassysSection.querySelectorAll('input[name="optChassysAlt"]');
+            let ChassysAltisChecked = false;
+            let ChassysAltValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optChassysAlt.forEach(radio => {
+                if (radio.checked) {
+                    ChassysAltValue = radio.value
+                    ChassysAltisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!ChassysAltisChecked) {
+                alert("Erro: Por favor, selecione uma alteração de chassi.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Alteração de Chassi: " + ChassysAltValue + "\n";
+
+            // Checkboxs dos kits de Saias
+            chassysCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    bodykitServices.push(checkbox.value);
+                }
+            });
+            
+            // Radio Alteração de Aerokits
+            const optAeroKit = chassysSection.querySelectorAll('input[name="optaerokit"]');
+            let AeroKitisChecked = false;
+            let AeroKitValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optAeroKit.forEach(radio => {
+                if (radio.checked) {
+                    AeroKitValue = radio.value
+                    AeroKitisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!AeroKitisChecked) {
+                alert("Erro: Por favor, selecione uma opção de Aerofólio.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Aerokit: " + AeroKitValue + "\n";
+
+            // Radio Alteração de Retrovisores
+            const optMirrorKit = chassysSection.querySelectorAll('input[name="optmirrorkit"]');
+            let MirrorKitisChecked = false;
+            let MirrorKitValue = null;
+
+            // verificando se algum botão radio está selecionado
+            optMirrorKit.forEach(radio => {
+                if (radio.checked) {
+                    MirrorKitValue = radio.value
+                    MirrorKitisChecked = true;
+                }
+            });
+
+            //  se nenhum botão radio está selecionado
+            if (!MirrorKitisChecked) {
+                alert("Erro: Por favor, selecione uma opção de retrovisores.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += "Retrovisores: " + MirrorKitValue + "\n";
+
+            if (ChassysAltValue === "Não Alterar" && AeroKitValue === "Não Instalar" && MirrorKitValue === "Não Instalar" &&  bodykitServices.length === 0) {
+                alert("Erro: Escolha pelo menos um Bodykit ou alguma Alteração.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            if (bodykitServices.length !== 0) {
+                message += bodykitServices.join(", ") + "\n"
+            }
+
+        }
+        
+        // Caso a checkbox Interior foi marcada.
+        if (selectedServices.includes("Interior")) {
+            const interiorSection = document.getElementById('InteriorSection');
+            const interiorCheckboxes = interiorSection.querySelectorAll('input[type="checkbox"]');
+            message += "Serviços de Interior Selecionados:  \n";
+
+            interiorCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    InteriorServices.push(checkbox.value);
+                }
+            });
+
+            // Se nenhum servico de interior dor selecionado, mostra um erro e previne o botão submit de executar
+            if (InteriorServices.length === 0) {
+                alert("Erro: Por favor, selecione pelo menos um serviço de interior.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+
+            // Garantindo que a caixa de texto seja preenchida
+            const interiorDescription = document.getElementById('interiorservicesdescription').value.trim();
+            // número mínimo de caractéres
+            if (interiorDescription.length < 10) {
+                alert("Erro: A descrição dos serviços de interior deve ter pelo menos 10 caracteres.");
+                event.preventDefault(); // previne o botão submit de executar
+                return; // Para a execução do programa casa haja erro
+            }
+            message += InteriorServices.join("\n") + "\n" + "Observações: " + interiorDescription;
+        }
+
+        // Relatório FINAL
+        if (selectedServices.length > 0) {
+            alert(message);
+            } else {
+            alert("Nenhum serviço selecionado.");
+            event.preventDefault(); // previne o botão submit de executar 
+        }
+    }
+     
+    
+    function resetForm() {
+    const form = document.getElementById("orcamento");
+    
+    // Reseta o formulario
+    form.reset();
+
+    // Reabilita todoa oa campos desabilitados. 
+    const disabledElements = form.querySelectorAll(':disabled');
+    disabledElements.forEach(element => element.disabled = false);
+
+    // Esconde as sections que ja foram mostradas
+    const sectionsToHide = ['modelSection', 'yearSection', 'typeSection', 'preferencesSection', 'PaintJobSection', 'WheelSection', 'EngineSection', 'ChassysSection', 'InteriorSection', 'submitbutton',  'ConfirmChassysSelectionButton', 'ConfirmServicesSelectionButton'];
+    sectionsToHide.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.classList.add('hidden');
+        }
+    });
+
+    // Reseta as selecoes
+    const selectElements = form.querySelectorAll('select');
+    selectElements.forEach(select => {
+        select.selectedIndex = 0; // seta para a primeira option
+    });
+
+    // Reseta os radio e as checkboxes (manualmente se preciso)
+    const radioButtons = form.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.checked = false;
+    });
+
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+        checkbox.disabled = false; // Previne que estao reabilitadas
+    });
+
+    // Esconde todos os botoes
+    const buttonsToUnhide = ['confirmcarselectionButton'];
+    buttonsToUnhide.forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (button) {
+            button.classList.remove('hidden');
+        }
+    });
+
+    // Escrola para o topo da pagina
+    window.scrollTo(0, 0);
+}
+    
+
+    /* Não excluir estas funções, servirão de base para futuros projetos */
+    /* Função para mostrar um alerta com a marca, modelo e ano selecionados */
+    function getNames() {
+        const brandSelect = document.getElementById("carBrand");
+        const modelSelect = document.getElementById("carModel");
+        const yearSelect = document.getElementById("carYear");
+
+        const selectedBrand = brandSelect.options[brandSelect.selectedIndex].text;  // Obtém o texto da marca selecionada
+        const selectedModel = modelSelect.options[modelSelect.selectedIndex].text;  // Obtém o texto do modelo selecionado
+        const selectedYear = yearSelect.options[yearSelect.selectedIndex].text;  // Obtém o texto do ano selecionado
+
+        if (brandSelect.value !== "0" && modelSelect.value !== "0" && yearSelect.value !== "0") {
+            alert("Marca: " + selectedBrand + "\nModelo: " + selectedModel + "\nAno: " + selectedYear);
+        } else {
+            alert("Por favor, selecione todas as opções.");
+        }
+    }
+
+    /* Função para mostrar um alerta com a marca, modelo e ano selecionados com base em seus valores */
+    function getText() {
+        const selectedBrand = document.getElementById("carBrand").value;
+        const selectedModel = document.getElementById("carModel").value;
+        const selectedYear = document.getElementById("carYear").value;
+
+        if (selectedBrand !== "0" && selectedModel !== "0" && selectedYear !== "0") {
+            alert("Marca: " + selectedBrand + "\nModelo: " + selectedModel + "\nAno: " + selectedYear);
+        } else {
+            alert("Por favor, selecione todas as opções.");
+        }
+    }
+
+    /* esta precisa ser a ultima função executada pelo site, mas é quem ira dar início a tudo executando a função de busca das marcas de carros */
+    fetchCarBrands();  // Chama a função para carregar as marcas de carro quando o script é executado
+</script>
+</html>
