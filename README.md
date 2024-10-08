@@ -30,7 +30,7 @@ git clone https://github.com/your-username/los-pedros-customs.git
 This project was completed as a learning challenge and is fully functional. Future improvements may include expanding the budget tool and adding more interactive features.
 
 ## Contributors
-Pedro Henrique Z. Costa
-Fabio Visentainer Tomaselli
-Leandro Canha
+Pedro Henrique Z. Costa <br>
+Fabio Augusto Tomaselli Visentainer <br>
+Leandro Canha <br>
 Leonardo Ceccon Sobol
